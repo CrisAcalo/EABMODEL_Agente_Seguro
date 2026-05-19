@@ -60,8 +60,57 @@ body {
   flex-shrink: 0;
 }
 
+/* Brand */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 16px 14px;
+  border-bottom: 1px solid #334155;
+}
+.sidebar-brand-icon { font-size: 22px; }
+.sidebar-brand-name {
+  color: #f1f5f9;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+/* Primary nav */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px;
+  border-bottom: 1px solid #334155;
+}
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: none;
+  background: none;
+  color: var(--sidebar-text);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  text-align: left;
+  width: 100%;
+}
+.sidebar-nav-item:hover { background: var(--sidebar-hover); color: #f1f5f9; }
+.sidebar-nav-item.active {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+.nav-icon { font-size: 16px; }
+
+/* Chat history header */
 .sidebar-header {
-  padding: 20px 16px 12px;
+  padding: 14px 16px 10px;
   border-bottom: 1px solid #334155;
   display: flex;
   align-items: center;
@@ -71,8 +120,10 @@ body {
 
 .sidebar-header h2 {
   color: #f1f5f9;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .btn-new-chat {
@@ -80,7 +131,7 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 6px 12px;
+  padding: 5px 10px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -456,6 +507,333 @@ body {
 .btn-send:hover:not(:disabled) { background: var(--primary-dark); }
 .btn-send:disabled { opacity: .5; cursor: not-allowed; }
 
+/* ── INFO VIEW ── */
+.info-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.info-loading {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.info-header {
+  padding: 24px 32px 16px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.info-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.info-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Tabs */
+.info-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 32px 0;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.info-tab {
+  padding: 10px 18px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+  margin-bottom: -1px;
+}
+.info-tab:hover { color: var(--text); }
+.info-tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 600;
+}
+
+/* Content area */
+.info-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+}
+
+/* ── HOSPITAL CARDS ── */
+.hospitals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.hospital-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hospital-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hospital-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+.hospital-city {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.hospital-cost {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.hospital-cost strong { color: var(--text); }
+
+.hospital-specialties-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.hospital-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.specialty-chip {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Network badges */
+.network-badge {
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.network-badge.small { font-size: 11px; padding: 3px 10px; }
+.network-preferente { background: #eff6ff; color: #1d4ed8; }
+.network-regular    { background: #f0fdf4; color: #15803d; }
+.network-economico  { background: #fefce8; color: #a16207; }
+
+/* ── PLANS SECTION ── */
+.plans-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Plan toggle buttons */
+.plan-toggles-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.plan-toggles-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.plan-toggles {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.plan-toggle-btn {
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all .15s;
+}
+.plan-toggle-btn:hover { border-color: var(--primary); color: var(--primary); }
+.plan-toggle-btn.selected {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Compare table */
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  font-size: 14px;
+}
+.compare-table th,
+.compare-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+.compare-table thead tr {
+  background: #f8fafc;
+}
+.compare-table th {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 13px;
+}
+.col-plan { text-align: center; }
+.plan-th-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.col-basico   { background: #fefce8; }
+.col-plus     { background: #eff6ff; }
+.col-premium  { background: #f0fdf4; }
+
+.section-row td {
+  background: #f1f5f9;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 16px;
+}
+.coverage-cell { text-align: center; }
+.coverage-pct {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+}
+.coverage-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.adj-cell { text-align: center; font-weight: 600; }
+.adj-cell.positive { color: var(--success); }
+.adj-cell.negative { color: var(--danger); }
+.adj-cell.neutral  { color: var(--text-muted); }
+
+/* Copay simulator */
+.sim-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+}
+.sim-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.sim-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.sim-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.sim-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.sim-slider {
+  width: 100%;
+  max-width: 360px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.sim-results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sim-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sim-level { min-width: 120px; padding-top: 4px; }
+.sim-plans {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.sim-plan-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-width: 140px;
+  flex: 1;
+}
+.sim-plan-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 6px;
+}
+.sim-copay {
+  font-size: 14px;
+  color: var(--text);
+}
+.sim-copay strong { color: var(--success); font-size: 16px; }
+.sim-covered {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .sidebar { width: 200px; min-width: 160px; }
@@ -463,8 +841,11 @@ body {
   .message-bubble { max-width: 90%; }
   .messages-container { padding: 16px; }
   .chat-input-area { padding: 12px 16px; }
+  .info-content { padding: 16px; }
+  .hospitals-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
   .sidebar { display: none; }
 }
+

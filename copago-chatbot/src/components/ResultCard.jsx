@@ -29,10 +29,10 @@ export default function ResultCard({ result, planName }) {
           <div className="result-hospital-name">{best.hospitalName}</div>
           <div className="result-hospital-city">{best.city} · Red {NETWORK_LABELS[best.networkLevel]}</div>
           <div className="result-copay">
-            Copago estimado: <strong>${best.estimatedCopay}</strong>
+            Copago estimado: <strong>${best.estimatedCopay.toFixed(2)}</strong>
           </div>
           <div className="result-coverage">
-            Cobertura estimada: <strong>{best.coveragePercent}%</strong>
+            Seguro cubre: <strong>${best.coveredAmount.toFixed(2)}</strong> ({best.coveragePercent}%)
           </div>
         </div>
       )}
@@ -41,10 +41,10 @@ export default function ResultCard({ result, planName }) {
         <div className="result-others">
           <div className="result-others-label">Otras opciones:</div>
           {others.map((h) => (
-            <div key={h.hospitalId} className="result-other-item">
-              <span>{h.hospitalName}</span>
-              <span>— Copago estimado: <strong>${h.estimatedCopay}</strong></span>
-            </div>
+              <div key={h.hospitalId} className="result-other-item">
+                <span>{h.hospitalName}</span>
+                <span>— Copago: <strong>${h.estimatedCopay.toFixed(2)}</strong> · Cubre: {h.coveragePercent}%</span>
+              </div>
           ))}
         </div>
       )}

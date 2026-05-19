@@ -26,9 +26,9 @@ export function estimateCoverage({ specialtyId, planId, seedData }) {
       city: hospital.city,
       networkLevel: hospital.networkLevel,
       baseConsultationCost: baseCost,
-      coveragePercent: Math.round(coveragePercent * 100),
-      coveredAmount: Math.round(coveredAmount),
-      estimatedCopay: Math.round(estimatedCopay),
+      coveragePercent: Math.round(coveragePercent * 100),           // % stays as integer
+      coveredAmount: Math.round(coveredAmount * 100) / 100,         // 2 decimal places
+      estimatedCopay: Math.round(estimatedCopay * 100) / 100,       // 2 decimal places
       isBestOption: false
     };
   });
